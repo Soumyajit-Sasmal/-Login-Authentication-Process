@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>my sql table create</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(0deg, #300342 0%, #0f0114 100%);
+        }
+
+        .myform {
+            width: 30vw;
+            height: auto;
+            background: rgba(0,0,0,0.7);
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 3vw;
+            padding: 2vw;
+        }
+ .myform input, select {
+    margin-top: 1vw;
+    width: 20vw;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    text-align: center;
+    color: white;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.myform input[type="submit"] {
+    background: rgba(255,255,255,0.8);
+    color: black;
+}
+
+.myform option {
+    background-color: black;
+    color: white;
+}
+.show{
+     margin-top: 1vw;
+     width: 18vw;
+    background:rgba(255,255,255,0.8);
+    border: none;
+    text-align: center;
+    color: black;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+    </style>
+</head>
+<body>
+    <form class="myform" action="submit.php" method="post">
+        <center>
+            <input type="text" name="fn" placeholder="Enter fullname" maxlength="50" required><br>
+            <input type="text" name="ad" placeholder="Enter address"  maxlength="100" required><br>
+            <input type="email" name="em" placeholder="Enter email" required><br>
+            <input type="password"onchange=" checkps()"  id="ps" minlength="8" name="ps" maxlength="15" placeholder="Enter password"required><br>
+            <input type="conferm password" onchange=" checkps()" id="cps"  minlength="8" name="cps" maxlength="15" placeholder="Enter conferm password" required><br>
+            <div onclick="toggleps()" class="show">   show password </div> 
+             <input type="text" name="pn" placeholder="Enter phone numbers " value="+" maxlength="15" required><br>
+            <select name="st">
+                <option value="none">-----selec country-----</option>
+                <option value="WB">West Bengal</option>
+                <option value="PN">Punjab</option>
+                <option value="TN">Tamilnadu</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="OD">Odisha</option>
+            </select><br>
+            <input  id= "reg" type="submit" vaule="REGISTER HERE" style="display:none" > <br>
+        </center>
+    </form>
+</body>
+<script>
+    var t=1;
+    function checkps(){
+        var ps= document.getElementById('ps').value;
+        var cps= document.getElementById('cps').value;
+        if(ps==cps){
+            document.getElementById('cps').style.cssText="background-color:green";
+            document.getElementById('ps').style.cssText="background-color:green";
+            document.getElementById('reg').style.cssText="display:block";
+        }
+        else{
+            document.getElementById('cps').style.cssText="background-color:red";
+            document.getElementById('ps').style.cssText="background-color:red";
+            document.getElementById('reg').style.cssText="display :none";
+        }
+        }
+  function toggleps()
+{
+    t=t*(-1);
+    if (t>0)
+    {
+        document.getElementById('ps').type="password";
+        document.getElementById('cps').type="password";
+    }
+    else
+    {
+        document.getElementById('ps').type="text";
+        document.getElementById('cps').type="text";
+    }
+}
+
+</script>
+</html>
